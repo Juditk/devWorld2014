@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:WindChat/WindChat.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:PresentationInformation/PresentationInformation.xcodeproj">
    </FileRef>
 </Workspace>
