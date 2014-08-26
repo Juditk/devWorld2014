@@ -62,7 +62,15 @@
     
     WATRemotePeer *peer = [[[WATPeerManager sharedPeerManager]nearbyPeers]objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = peer.remotePeerID;
+    if (peer.remotePeerName) {
+        cell.textLabel.text = peer.remotePeerName;
+    } else {
+        cell.textLabel.text = peer.remotePeerID;
+    }
+    
+    if (peer.remotePeerImage) {
+        cell.imageView.image = peer.remotePeerImage;
+    }
     
     return cell;
 }

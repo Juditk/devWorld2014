@@ -50,7 +50,7 @@
             
             [[WATPeerManager sharedPeerManager]updatePeerInfoForPeerID:realName forPeerName:peerName withImage:displayAvatar];
             
-            //[[NSNotificationCenter defaultCenter] postNotificationName:@"tableDataChanged" object:self];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"updateArray" object:self];
 
         }
             break;

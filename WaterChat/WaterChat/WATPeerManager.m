@@ -247,7 +247,16 @@
 
 - (void)updatePeerInfoForPeerID:(NSString*)realName forPeerName:(NSString*)peerName withImage:(UIImage*)peerImage
 {
+    
     NSLog(@"Recived An Update For PeerName %@ who is now RealName %@",peerName,realName);
+    
+    for (WATRemotePeer *peer in [[WATPeerManager sharedPeerManager]nearbyPeers]) {
+        if (peer.remotePeerID) {
+            [peer setRemotePeerName:realName];
+            [peer setRemotePeerImage:peerImage];
+        }
+    }
+    
     if ( realName ) {
        // [peerMap setValue:realName forKey:peerName];
     }
