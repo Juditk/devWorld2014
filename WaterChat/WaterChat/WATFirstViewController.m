@@ -14,10 +14,84 @@
 
 @implementation WATFirstViewController
 
+@synthesize tableView, nearbyPeersArray;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+
+    [self performSelector:@selector(firstRunExperience) withObject:nil afterDelay:0.1];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateArray)
+                                                 name:@"updateArray"
+                                               object:nil];
+
+}
+
+- (void) updateArray
+{
+    NSLog(@"reloading data");
+    [tableView reloadData];
+}
+
+#pragma mark - Table view delegates
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    return [[[WATPeerManager sharedPeerManager]nearbyPeers]count];
+    
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    UITableViewCell *cell;
+    static NSString *cellIdentifier = @"peerCell";
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+    
+    WATRemotePeer *peer = [[[WATPeerManager sharedPeerManager]nearbyPeers]objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text = peer.remotePeerID;
+    
+    return cell;
+}
+
+#pragma first run
+
+- (void) firstRunExperience
+{
+    if (![[NSUserDefaults standardUserDefaults] valueForKeyPath:@"personalID"] )
+    {
+        NSLog(@"Information missing, this might be the first time we are running");
+        
+        [self generateUniqueID];
+        
+        [[WATPeerManager sharedPeerManager]startServices];
+        
+    } else {
+        
+        [[WATPeerManager sharedPeerManager]startServices];
+    }
+}
+
+- (void)generateUniqueID
+{
+    NSString *UUIDToSave = [[NSUUID UUID] UUIDString];
+    UUIDToSave = [UUIDToSave substringToIndex:15];
+    
+    [[NSUserDefaults standardUserDefaults] setObject: UUIDToSave forKey: @"personalID"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)didReceiveMemoryWarning

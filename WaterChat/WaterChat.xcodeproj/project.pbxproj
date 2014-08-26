@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B24D5F4619AC3474009FDA63 /* WATPeerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B24D5F4519AC3474009FDA63 /* WATPeerManager.m */; };
+		B24D5F4919AC352B009FDA63 /* WATRemotePeer.m in Sources */ = {isa = PBXBuildFile; fileRef = B24D5F4819AC352B009FDA63 /* WATRemotePeer.m */; };
 		B2DF125219AAE9DF00285F79 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2DF125119AAE9DF00285F79 /* Foundation.framework */; };
 		B2DF125419AAE9DF00285F79 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2DF125319AAE9DF00285F79 /* CoreGraphics.framework */; };
 		B2DF125619AAE9DF00285F79 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2DF125519AAE9DF00285F79 /* UIKit.framework */; };
@@ -35,6 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B24D5F4419AC3474009FDA63 /* WATPeerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WATPeerManager.h; sourceTree = "<group>"; };
+		B24D5F4519AC3474009FDA63 /* WATPeerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WATPeerManager.m; sourceTree = "<group>"; };
+		B24D5F4719AC352B009FDA63 /* WATRemotePeer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WATRemotePeer.h; sourceTree = "<group>"; };
+		B24D5F4819AC352B009FDA63 /* WATRemotePeer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WATRemotePeer.m; sourceTree = "<group>"; };
 		B2DF124E19AAE9DF00285F79 /* WaterChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WaterChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2DF125119AAE9DF00285F79 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B2DF125319AAE9DF00285F79 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -82,6 +88,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B24D5F4019AC33FD009FDA63 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B24D5F4419AC3474009FDA63 /* WATPeerManager.h */,
+				B24D5F4519AC3474009FDA63 /* WATPeerManager.m */,
+				B24D5F4719AC352B009FDA63 /* WATRemotePeer.h */,
+				B24D5F4819AC352B009FDA63 /* WATRemotePeer.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		B24D5F4119AC3406009FDA63 /* App Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				B2DF126019AAE9DF00285F79 /* WATAppDelegate.h */,
+				B2DF126119AAE9DF00285F79 /* WATAppDelegate.m */,
+			);
+			name = "App Delegate";
+			sourceTree = "<group>";
+		};
+		B24D5F4219AC3412009FDA63 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B2DF126319AAE9DF00285F79 /* Main.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		B24D5F4319AC3428009FDA63 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B2DF126619AAE9DF00285F79 /* WATFirstViewController.h */,
+				B2DF126719AAE9DF00285F79 /* WATFirstViewController.m */,
+				B2DF126919AAE9DF00285F79 /* WATSecondViewController.h */,
+				B2DF126A19AAE9DF00285F79 /* WATSecondViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		B2DF124519AAE9DF00285F79 = {
 			isa = PBXGroup;
 			children = (
@@ -115,13 +160,10 @@
 		B2DF125719AAE9DF00285F79 /* WaterChat */ = {
 			isa = PBXGroup;
 			children = (
-				B2DF126019AAE9DF00285F79 /* WATAppDelegate.h */,
-				B2DF126119AAE9DF00285F79 /* WATAppDelegate.m */,
-				B2DF126319AAE9DF00285F79 /* Main.storyboard */,
-				B2DF126619AAE9DF00285F79 /* WATFirstViewController.h */,
-				B2DF126719AAE9DF00285F79 /* WATFirstViewController.m */,
-				B2DF126919AAE9DF00285F79 /* WATSecondViewController.h */,
-				B2DF126A19AAE9DF00285F79 /* WATSecondViewController.m */,
+				B24D5F4119AC3406009FDA63 /* App Delegate */,
+				B24D5F4019AC33FD009FDA63 /* Models */,
+				B24D5F4219AC3412009FDA63 /* Views */,
+				B24D5F4319AC3428009FDA63 /* Controllers */,
 				B2DF126C19AAE9DF00285F79 /* Images.xcassets */,
 				B2DF125819AAE9DF00285F79 /* Supporting Files */,
 			);
@@ -258,6 +300,8 @@
 				B2DF125E19AAE9DF00285F79 /* main.m in Sources */,
 				B2DF126219AAE9DF00285F79 /* WATAppDelegate.m in Sources */,
 				B2DF126819AAE9DF00285F79 /* WATFirstViewController.m in Sources */,
+				B24D5F4619AC3474009FDA63 /* WATPeerManager.m in Sources */,
+				B24D5F4919AC352B009FDA63 /* WATRemotePeer.m in Sources */,
 				B2DF126B19AAE9DF00285F79 /* WATSecondViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,6 +507,7 @@
 				B2DF128519AAE9DF00285F79 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B2DF128619AAE9DF00285F79 /* Build configuration list for PBXNativeTarget "WaterChatTests" */ = {
 			isa = XCConfigurationList;
@@ -471,6 +516,7 @@
 				B2DF128819AAE9DF00285F79 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
