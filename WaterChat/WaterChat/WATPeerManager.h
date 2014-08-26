@@ -10,6 +10,7 @@
 #import <MultipeerConnectivity/MultipeerConnectivity.h>
 #import "WATRemotePeer.h"
 #import "WATConstants.h"
+#import "WATMessageServer.h"
 
 
 @interface WATPeerManager : NSObject <MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCNearbyServiceAdvertiserDelegate>
@@ -32,6 +33,7 @@
 
 
 + (WATPeerManager *) sharedPeerManager;
+- (void)updatePeerInfoForPeerID:(NSString*)realName forPeerName:(NSString*)peerName withImage:(UIImage*)peerImage;
 - (void)setupSession;
 - (void)startServices;
 

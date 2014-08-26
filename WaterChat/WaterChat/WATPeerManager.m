@@ -203,6 +203,8 @@
     NSString *receivedMessage = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
     NSLog(@"didReceiveData %@ from %@", receivedMessage, peerID.displayName);
+    
+    [[WATMessageServer sharedManager]decodeMessage:data];
 }
 
 - (void)session:(MCSession *)session didStartReceivingResourceWithName:(NSString *)resourceName fromPeer:(MCPeerID *)peerID withProgress:(NSProgress *)progress
@@ -242,6 +244,20 @@
     
     [session sendData:myData toPeers:peersToSayHelloTo withMode:MCSessionSendDataReliable error:nil];
 }
+
+- (void)updatePeerInfoForPeerID:(NSString*)realName forPeerName:(NSString*)peerName withImage:(UIImage*)peerImage
+{
+    NSLog(@"Recived An Update For PeerName %@ who is now RealName %@",peerName,realName);
+    if ( realName ) {
+       // [peerMap setValue:realName forKey:peerName];
+    }
+    
+    if ( peerImage ) {
+        //[peerIDImageMap setValue:peerImage forKey:peerName];
+    }
+    
+}
+
 
 
 

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B24D5F4619AC3474009FDA63 /* WATPeerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B24D5F4519AC3474009FDA63 /* WATPeerManager.m */; };
 		B24D5F4919AC352B009FDA63 /* WATRemotePeer.m in Sources */ = {isa = PBXBuildFile; fileRef = B24D5F4819AC352B009FDA63 /* WATRemotePeer.m */; };
+		B24D5F4D19AC689E009FDA63 /* WATMessageServer.m in Sources */ = {isa = PBXBuildFile; fileRef = B24D5F4C19AC689E009FDA63 /* WATMessageServer.m */; };
 		B2DF125219AAE9DF00285F79 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2DF125119AAE9DF00285F79 /* Foundation.framework */; };
 		B2DF125419AAE9DF00285F79 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2DF125319AAE9DF00285F79 /* CoreGraphics.framework */; };
 		B2DF125619AAE9DF00285F79 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2DF125519AAE9DF00285F79 /* UIKit.framework */; };
@@ -42,6 +43,8 @@
 		B24D5F4719AC352B009FDA63 /* WATRemotePeer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WATRemotePeer.h; sourceTree = "<group>"; };
 		B24D5F4819AC352B009FDA63 /* WATRemotePeer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WATRemotePeer.m; sourceTree = "<group>"; };
 		B24D5F4A19AC57F9009FDA63 /* WATConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WATConstants.h; sourceTree = "<group>"; };
+		B24D5F4B19AC689E009FDA63 /* WATMessageServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WATMessageServer.h; sourceTree = "<group>"; };
+		B24D5F4C19AC689E009FDA63 /* WATMessageServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WATMessageServer.m; sourceTree = "<group>"; };
 		B2DF124E19AAE9DF00285F79 /* WaterChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WaterChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2DF125119AAE9DF00285F79 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B2DF125319AAE9DF00285F79 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -97,6 +100,8 @@
 				B24D5F4719AC352B009FDA63 /* WATRemotePeer.h */,
 				B24D5F4819AC352B009FDA63 /* WATRemotePeer.m */,
 				B24D5F4A19AC57F9009FDA63 /* WATConstants.h */,
+				B24D5F4B19AC689E009FDA63 /* WATMessageServer.h */,
+				B24D5F4C19AC689E009FDA63 /* WATMessageServer.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -303,6 +308,7 @@
 				B2DF126219AAE9DF00285F79 /* WATAppDelegate.m in Sources */,
 				B2DF126819AAE9DF00285F79 /* WATFirstViewController.m in Sources */,
 				B24D5F4619AC3474009FDA63 /* WATPeerManager.m in Sources */,
+				B24D5F4D19AC689E009FDA63 /* WATMessageServer.m in Sources */,
 				B24D5F4919AC352B009FDA63 /* WATRemotePeer.m in Sources */,
 				B2DF126B19AAE9DF00285F79 /* WATSecondViewController.m in Sources */,
 			);
