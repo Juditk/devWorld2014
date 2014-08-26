@@ -77,6 +77,9 @@
         
         [self generateUniqueID];
         
+        NSString *deviceName = [[UIDevice currentDevice] name];
+        [[NSUserDefaults standardUserDefaults] setObject: deviceName forKey: @"Name"];
+        
         [[WATPeerManager sharedPeerManager]startServices];
         
     } else {

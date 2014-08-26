@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <MultipeerConnectivity/MultipeerConnectivity.h>
 #import "WATRemotePeer.h"
+#import "WATConstants.h"
 
 
 @interface WATPeerManager : NSObject <MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCNearbyServiceAdvertiserDelegate>

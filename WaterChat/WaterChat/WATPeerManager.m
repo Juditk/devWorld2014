@@ -94,9 +94,28 @@
 
     NSString *peerUniqueID = [info objectForKey:@"uniqueID"];
     
-    WATRemotePeer *newPeer = [[WATRemotePeer alloc]initWithID:peerUniqueID];
+    WATRemotePeer *newPeer = [[WATRemotePeer alloc]initWithID:peerUniqueID peerName:nil peerAvatar:nil];
     [self addNewPeerToArray:newPeer];
     
+    BOOL shouldInvite = ([self.myPeerID.displayName compare:peerID.displayName]==NSOrderedDescending);
+    
+    if (shouldInvite)
+    {
+        if ( [[session connectedPeers] count] < 8) {
+            
+            [browser invitePeer:peerID
+                      toSession:self.session
+                    withContext:nil
+                        timeout:10];
+            NSLog(@"inviting");
+            
+        } else {
+            NSLog(@"This Session Is Full, Piss Off");
+        }
+        
+    } else {
+        NSLog(@"Not inviting");
+    }
 }
 
 - (void)browser:(MCNearbyServiceBrowser *)browser lostPeer:(MCPeerID *)peerID
@@ -123,7 +142,6 @@
 
 - (void) removePeerFromArray: (NSString *)peerID
 {
-    
     for (WATRemotePeer *peerToRemove in nearbyPeers) {
         if ( [peerToRemove.remotePeerID isEqualToString:peerID] ) {
             NSLog(@"Found the peer to remove");
@@ -157,8 +175,25 @@
 
 - (void)session:(MCSession *)session peer:(MCPeerID *)peerID didChangeState:(MCSessionState)state
 {
-    
     NSLog(@"Peer [%@] changed state to %d", peerID.displayName, state);
+    
+    switch (state) {
+        case MCSessionStateNotConnected:
+            NSLog(@"Not Connected to peer %@",peerID);
+            break;
+            
+        case MCSessionStateConnecting:
+            NSLog(@"Connecting to peer %@",peerID);
+            break;
+            
+        case MCSessionStateConnected:
+            NSLog(@"Connected to peer %@",peerID);
+            [self sayHelloToPeer:@[peerID]];
+            
+            break;
+        default:
+            break;
+    }
     
 }
 
@@ -184,6 +219,28 @@
 - (void)session:(MCSession *)session didReceiveStream:(NSInputStream *)stream withName:(NSString *)streamName fromPeer:(MCPeerID *)peerID
 {
     NSLog(@"didReceiveStream %@ from %@", streamName, peerID.displayName);
+}
+
+#pragma mark hello protocol
+
+- (void) sayHelloToPeer:(NSArray*)peersToSayHelloTo
+{
+    NSLog(@"I Just Came To Say Hello!!!");
+    //The Hello Dictionary Has a picture and a name that goes alongside a PeerID
+    
+    NSString *peerID = self.myPeerID.displayName;
+    NSString *realName = [[NSUserDefaults standardUserDefaults] stringForKey:@"Name"];
+    UIImage *displayAvatar = [UIImage imageNamed:@"avatar"];
+    
+    NSDictionary *myDict = [[NSDictionary alloc]initWithObjectsAndKeys:@kIncomingMessageTypeHello,@"messageType",
+                            peerID,@"peerName",
+                            realName,@"realName",
+                            displayAvatar,@"displayAvatar"
+                            ,nil];
+    
+    NSData *myData = [NSKeyedArchiver archivedDataWithRootObject:myDict];
+    
+    [session sendData:myData toPeers:peersToSayHelloTo withMode:MCSessionSendDataReliable error:nil];
 }
 
 
