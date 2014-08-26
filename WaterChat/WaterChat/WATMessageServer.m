@@ -10,7 +10,7 @@
 
 @implementation WATMessageServer
 
-@synthesize receivedMessage;
+@synthesize receivedMessage, receivedImages;
 
 + (WATMessageServer *) sharedManager
 {
@@ -72,10 +72,33 @@
         }
             break;
             
+        case kIncomingMessageTypeChatImage:
+        {
+            NSLog(@"Somebody Is Sending an image");
+            NSString *realName = [incomingDict objectForKey:@"realName"];
+            UIImage *chatImage = [incomingDict objectForKey:@"chatImage"];
+            
+            [self updateImagesArray:chatImage];
+            NSLog(@"%@ has sent an image",realName);
+
+        }
+            break;
+            
             
         default:
             break;
     }
+}
+
+- (void) updateImagesArray:(UIImage *)image
+{
+    if (receivedImages == nil) {
+        receivedImages = [[NSMutableArray alloc]init];
+    }
+    
+    [receivedImages addObject:image];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"updateImages" object:self];
+
 }
 
 @end

@@ -13,10 +13,12 @@
 @interface WATMessageServer : NSObject
 {
     NSString *receivedMessage;
+    NSMutableArray *recevivedImages;
 }
 
 
 @property (nonatomic, strong) NSString *receivedMessage;
+@property (nonatomic, strong) NSMutableArray *receivedImages;
 
 
 + (WATMessageServer *) sharedManager;

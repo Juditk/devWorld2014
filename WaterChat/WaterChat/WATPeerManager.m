@@ -261,6 +261,22 @@
 
 }
 
+- (void) sendChatImage:(UIImage *)chatImage
+{
+    NSLog(@"Sending image");
+    NSString *realName = [[NSUserDefaults standardUserDefaults] stringForKey:@"Name"];
+    
+    NSDictionary *myDict = [[NSDictionary alloc]initWithObjectsAndKeys:@kIncomingMessageTypeChatImage,@"messageType",
+                            realName,@"realName",
+                            chatImage,@"chatImage"
+                            ,nil];
+    
+    NSData *myData = [NSKeyedArchiver archivedDataWithRootObject:myDict];
+    
+    [session sendData:myData toPeers:[session connectedPeers] withMode:MCSessionSendDataReliable error:nil];
+    
+}
+
 - (UIImage *)randomImage
 {
     NSUInteger randomIndex = arc4random()%10;
