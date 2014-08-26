@@ -34,6 +34,7 @@
 
 + (WATPeerManager *) sharedPeerManager;
 - (void)updatePeerInfoForPeerID:(NSString*)realName forPeerName:(NSString*)peerName withImage:(UIImage*)peerImage;
+- (void) sendChatMessage:(NSString *)chatMessage;
 - (void)setupSession;
 - (void)startServices;
 

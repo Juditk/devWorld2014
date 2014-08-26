@@ -55,6 +55,17 @@
         }
             break;
             
+        case kIncomingMessageTypeChatText:
+        {
+            NSLog(@"Somebody Is Sending a message");
+            NSString *realName = [incomingDict objectForKey:@"realName"];
+            NSString *chatMessage = [incomingDict objectForKey:@"chatMessage"];
+        
+            NSLog(@"%@ says: %@",realName,chatMessage);
+            
+        }
+            break;
+            
             
         default:
             break;

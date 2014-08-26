@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WATPeerManager.h"
 
-@interface WATSecondViewController : UIViewController
+@interface WATSecondViewController : UIViewController <UITextFieldDelegate>
+{
+    UITextView *textBox;
+    UITextField *chatBox;
+}
+
+@property (nonatomic, strong) IBOutlet UITextView *textBox;
+@property (nonatomic, strong) IBOutlet UITextField *chatBox;
 
 @end

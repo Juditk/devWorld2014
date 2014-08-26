@@ -12,6 +12,8 @@
 
 //incoming message keys
 #define kIncomingMessageTypeHello 1
+#define kIncomingMessageTypeChatText 2
+#define kIncomingMessageTypeChatImage 3
 
 
 @protocol WATConstants <NSObject>

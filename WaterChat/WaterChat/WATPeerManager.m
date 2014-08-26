@@ -245,6 +245,22 @@
     [session sendData:myData toPeers:peersToSayHelloTo withMode:MCSessionSendDataReliable error:nil];
 }
 
+- (void) sendChatMessage:(NSString *)chatMessage
+{
+    NSLog(@"Sending message: %@",chatMessage);
+    NSString *realName = [[NSUserDefaults standardUserDefaults] stringForKey:@"Name"];
+
+    NSDictionary *myDict = [[NSDictionary alloc]initWithObjectsAndKeys:@kIncomingMessageTypeChatText,@"messageType",
+                            realName,@"realName",
+                            chatMessage,@"chatMessage"
+                            ,nil];
+    
+    NSData *myData = [NSKeyedArchiver archivedDataWithRootObject:myDict];
+    
+    [session sendData:myData toPeers:[session connectedPeers] withMode:MCSessionSendDataReliable error:nil];
+
+}
+
 - (UIImage *)randomImage
 {
     NSUInteger randomIndex = arc4random()%10;

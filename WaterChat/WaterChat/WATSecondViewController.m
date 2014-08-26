@@ -14,6 +14,8 @@
 
 @implementation WATSecondViewController
 
+@synthesize textBox, chatBox;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -24,6 +26,25 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) sendText {
+    //retrieve text from chat box and clear chat box
+    NSString *message = self.chatBox.text;
+    self.chatBox.text = @"";
+    
+    // Send data to connected peers
+    [[WATPeerManager sharedPeerManager]sendChatMessage:message];
+    
+    //append your own text to the box
+    //[self receiveMessage:message fromPeer:self.myPeerID];
+    
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    [self sendText];
+    return YES;
 }
 
 @end
