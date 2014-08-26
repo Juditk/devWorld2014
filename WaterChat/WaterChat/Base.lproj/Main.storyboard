@@ -28,7 +28,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="u1e-5L-l1D"/>
+                    <tabBarItem key="tabBarItem" title="Peers" image="first" id="u1e-5L-l1D"/>
                     <connections>
                         <outlet property="tableView" destination="Rb5-tM-Zp9" id="lat-hs-MP5"/>
                     </connections>
@@ -69,7 +69,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="Z7h-1E-pvt"/>
+                    <tabBarItem key="tabBarItem" title="Chat" image="second" id="Z7h-1E-pvt"/>
                     <connections>
                         <outlet property="chatBox" destination="LrA-Ot-UVp" id="HfR-Tq-Qqk"/>
                         <outlet property="textBox" destination="Cgv-nQ-A4c" id="AAE-fN-HUH"/>

@@ -11,6 +11,12 @@
 #import "WATPeerManager.h"
 
 @interface WATMessageServer : NSObject
+{
+    NSString *receivedMessage;
+}
+
+
+@property (nonatomic, strong) NSString *receivedMessage;
 
 
 + (WATMessageServer *) sharedManager;

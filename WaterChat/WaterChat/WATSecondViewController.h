@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "WATPeerManager.h"
+#import "WATMessageServer.h"
 
 @interface WATSecondViewController : UIViewController <UITextFieldDelegate>
 {

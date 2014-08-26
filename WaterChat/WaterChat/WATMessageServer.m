@@ -10,6 +10,8 @@
 
 @implementation WATMessageServer
 
+@synthesize receivedMessage;
+
 + (WATMessageServer *) sharedManager
 {
     static WATMessageServer *sharedMessageServer = nil;
@@ -61,7 +63,11 @@
             NSString *realName = [incomingDict objectForKey:@"realName"];
             NSString *chatMessage = [incomingDict objectForKey:@"chatMessage"];
         
-            NSLog(@"%@ says: %@",realName,chatMessage);
+            NSString *theMessage = [NSString stringWithFormat:@"%@ says: %@\n",realName,chatMessage];
+            
+            receivedMessage = theMessage;
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"updateChat" object:self];
             
         }
             break;
@@ -70,8 +76,6 @@
         default:
             break;
     }
-    
 }
-
 
 @end

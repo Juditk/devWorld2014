@@ -19,7 +19,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateChat)
+                                                 name:@"updateChat"
+                                               object:nil];
+    
+    textBox.text = @"Welcome!\n";
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -37,8 +44,22 @@
     [[WATPeerManager sharedPeerManager]sendChatMessage:message];
     
     //append your own text to the box
-    //[self receiveMessage:message fromPeer:self.myPeerID];
+    NSString *myMessage = [NSString stringWithFormat:@"Me: %@\n",message];
+    [[WATMessageServer sharedManager]setReceivedMessage:myMessage];
+    [self updateChat];
     
+}
+
+- (void) updateChat
+{
+    NSString *newString = [[WATMessageServer sharedManager]receivedMessage];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        textBox.text = [textBox.text stringByAppendingString:newString];
+    });
+    
+    NSLog(@"%@",newString);
+
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
