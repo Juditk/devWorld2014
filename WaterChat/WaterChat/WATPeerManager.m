@@ -232,7 +232,7 @@
     
     NSString *peerID = self.myPeerID.displayName;
     NSString *realName = [[NSUserDefaults standardUserDefaults] stringForKey:@"Name"];
-    UIImage *displayAvatar = [UIImage imageNamed:@"avatar"];
+    UIImage *displayAvatar = [self randomImage];
     
     NSDictionary *myDict = [[NSDictionary alloc]initWithObjectsAndKeys:@kIncomingMessageTypeHello,@"messageType",
                             peerID,@"peerName",
@@ -245,6 +245,14 @@
     [session sendData:myData toPeers:peersToSayHelloTo withMode:MCSessionSendDataReliable error:nil];
 }
 
+- (UIImage *)randomImage
+{
+    NSUInteger randomIndex = arc4random()%10;
+    NSString *imageString = [NSString stringWithFormat:@"avatar%d",randomIndex];
+    UIImage *selectedImage = [UIImage imageNamed:imageString];
+    return selectedImage;
+}
+
 - (void)updatePeerInfoForPeerID:(NSString*)realName forPeerName:(NSString*)peerName withImage:(UIImage*)peerImage
 {
     
@@ -255,14 +263,6 @@
             [peer setRemotePeerName:realName];
             [peer setRemotePeerImage:peerImage];
         }
-    }
-    
-    if ( realName ) {
-       // [peerMap setValue:realName forKey:peerName];
-    }
-    
-    if ( peerImage ) {
-        //[peerIDImageMap setValue:peerImage forKey:peerName];
     }
     
 }
