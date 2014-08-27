@@ -14,7 +14,7 @@
 
 @implementation WATThirdViewController
 
-@synthesize tableView;
+@synthesize imageCollectionView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -96,6 +96,9 @@
     //Send the selected image to all peers
     [[WATPeerManager sharedPeerManager]sendChatImage:chosenImage];
     
+    //Make sure the image appears in our own view
+    [[WATMessageServer sharedManager]updateImagesArray:chosenImage];
+    
     [picker dismissViewControllerAnimated:YES completion:NULL];
     
 }
@@ -110,34 +113,36 @@
 
 #pragma mark tableView delegate methods
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
-    return 1;
+-(NSInteger)numberOfSectionsInCollectionView:
+(UICollectionView *)collectionView {
+    
+    return 1; // The number of sections we want
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    // Return the number of rows in the section.
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView
+    numberOfItemsInSection:(NSInteger)section {
+    
     return [[[WATMessageServer sharedManager]receivedImages]count];
-    
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell;
-    static NSString *cellIdentifier = @"peerCell";
+    UICollectionViewCell* cell =
+    [collectionView dequeueReusableCellWithReuseIdentifier:@"imageCell"
+                                              forIndexPath:indexPath]; // Create the cell from the storyboard cell
     
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-    }
     
+    UIImageView *imageItemCellImageView = (UIImageView*)[cell viewWithTag:100];
     UIImage *image = [[[WATMessageServer sharedManager]receivedImages]objectAtIndex:indexPath.row];
-    cell.imageView.image = image;
+    imageItemCellImageView.image = image;
     
-    return cell;
+    return cell; // Return the cell
 }
+
+
 
 
 
@@ -146,7 +151,7 @@
 - (void) updateImages
 {
     NSLog(@"reloading data");
-    [tableView reloadData];
+    [imageCollectionView reloadData];
 }
 
 

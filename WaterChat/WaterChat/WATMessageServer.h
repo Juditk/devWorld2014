@@ -23,5 +23,6 @@
 
 + (WATMessageServer *) sharedManager;
 - (void) decodeMessage: (NSData *)incomingData;
+- (void) updateImagesArray:(UIImage *)image;
 
 @end

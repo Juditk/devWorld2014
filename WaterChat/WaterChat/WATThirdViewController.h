@@ -10,12 +10,12 @@
 #import "WATPeerManager.h"
 #import "WATMessageServer.h"
 
-@interface WATThirdViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface WATThirdViewController : UIViewController <UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate>
 {
-    UITableView *tableview;
+    UICollectionView *imageCollectionView;
 }
 
-@property (nonatomic,retain) IBOutlet UITableView *tableView;
+@property (nonatomic,retain) IBOutlet UICollectionView *imageCollectionView;
 
 - (IBAction)sendPhoto:(id)sender;
 
