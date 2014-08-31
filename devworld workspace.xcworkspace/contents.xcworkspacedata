@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:HeartChat/HeartChat.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:WaterChat/WaterChat.xcodeproj">
    </FileRef>
    <FileRef
