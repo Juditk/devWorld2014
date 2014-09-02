@@ -7,8 +7,6 @@
 //
 
 #import "JKRemoteConnection.h"
-#import "GSGlobalMessageServer.h"
-#import "GSDevice.h"
 
 
 // Private properties

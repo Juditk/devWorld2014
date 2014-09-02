@@ -13,8 +13,6 @@
 
 #import "Server.h"
 #import "Connection.h"
-#import "GSDevice.h"
-#import "GSHomeBeacon.h"
 
 // Declare some private properties and methods
 @interface Server ()

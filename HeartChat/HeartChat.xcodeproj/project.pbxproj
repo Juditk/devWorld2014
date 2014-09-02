@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B22981A319B553EB0087ED68 /* JKPeerConnectivitySetup.m in Sources */ = {isa = PBXBuildFile; fileRef = B22981A219B553EB0087ED68 /* JKPeerConnectivitySetup.m */; };
 		B28132C619B3E0F600609DDB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B28132C519B3E0F600609DDB /* Foundation.framework */; };
 		B28132C819B3E0F600609DDB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B28132C719B3E0F600609DDB /* CoreGraphics.framework */; };
 		B28132CA19B3E0F600609DDB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B28132C919B3E0F600609DDB /* UIKit.framework */; };
@@ -48,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B22981A119B553EB0087ED68 /* JKPeerConnectivitySetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKPeerConnectivitySetup.h; sourceTree = "<group>"; };
+		B22981A219B553EB0087ED68 /* JKPeerConnectivitySetup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKPeerConnectivitySetup.m; sourceTree = "<group>"; };
 		B28132C219B3E0F600609DDB /* HeartChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeartChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B28132C519B3E0F600609DDB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B28132C719B3E0F600609DDB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -262,6 +265,8 @@
 				B281330F19B3E1C900609DDB /* JKPeerConnectivity.h */,
 				B281331019B3E1C900609DDB /* JKPeerConnectivity.m */,
 				B281331119B3E1C900609DDB /* JKPeerConnectivityDelegate.h */,
+				B22981A119B553EB0087ED68 /* JKPeerConnectivitySetup.h */,
+				B22981A219B553EB0087ED68 /* JKPeerConnectivitySetup.m */,
 			);
 			name = Interface;
 			sourceTree = "<group>";
@@ -410,6 +415,7 @@
 				B281330319B3E14800609DDB /* HRTPeerManager.m in Sources */,
 				B281332019B3E1F800609DDB /* JKRemoteConnection.m in Sources */,
 				B281332B19B3E20000609DDB /* Server.m in Sources */,
+				B22981A319B553EB0087ED68 /* JKPeerConnectivitySetup.m in Sources */,
 				B28132DF19B3E0F600609DDB /* HRTSecondViewController.m in Sources */,
 				B281331319B3E1C900609DDB /* JKPeerConnectivity.m in Sources */,
 				B28132D619B3E0F600609DDB /* HRTAppDelegate.m in Sources */,
@@ -623,6 +629,7 @@
 				B28132F919B3E0F600609DDB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B28132FA19B3E0F600609DDB /* Build configuration list for PBXNativeTarget "HeartChatTests" */ = {
 			isa = XCConfigurationList;
@@ -631,6 +638,7 @@
 				B28132FC19B3E0F600609DDB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
