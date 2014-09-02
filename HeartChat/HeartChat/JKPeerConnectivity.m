@@ -35,6 +35,8 @@ static JKPeerConnectivity *sharedSession = nil;
 
 - (void)startUp {
     //Set up our own server & start it up
+    [JKPeerConnectivitySetup init];
+    
     NSLog(@"Bringing Up My Local Connection");
     myConnection = [[JKLocalConnection alloc] init];
     
