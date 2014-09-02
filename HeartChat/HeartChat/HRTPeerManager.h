@@ -16,12 +16,14 @@
 @interface HRTPeerManager : NSObject <JKPeerConnectivityDelegate>
 {
     NSMutableArray *nearbyPeers;
-    NSDictionary *myDiscoveryInfo;
+    NSMutableDictionary *peerMap;
+    NSMutableDictionary *peerImageMap;
 }
 
 @property (nonatomic, strong) NSMutableArray *nearbyPeers;
-@property (nonatomic, strong) NSDictionary *myDiscoveryInfo;
 @property (nonatomic, strong) NSString *encodedImage;
+@property (nonatomic, strong) NSMutableDictionary *peerMap;
+@property (nonatomic, strong) NSMutableDictionary *peerImageMap;
 
 
 + (HRTPeerManager *) sharedPeerManager;
@@ -29,6 +31,6 @@
 - (void) sendChatMessage:(NSString *)chatMessage;
 - (void) sendChatImage:(UIImage *)chatImage;
 - (void) setupSession;
-- (void) startServices;
+- (NSArray*)currrentConnectPeers;
 
 @end

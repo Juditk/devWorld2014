@@ -10,7 +10,7 @@
 
 @implementation HRTPeerManager
 
-@synthesize myDiscoveryInfo, nearbyPeers;
+@synthesize nearbyPeers, peerImageMap, peerMap;
 
 + (HRTPeerManager *) sharedPeerManager
 {
@@ -26,16 +26,12 @@
 {
     self = [super init];
     if (self) {
-        
+        peerImageMap = [[NSMutableDictionary alloc]init];
+        peerMap = [[NSMutableDictionary alloc]init];
     }
     return self;
 }
 
-- (void)setupLocalPeer
-{
-    nearbyPeers = [[NSMutableArray alloc]init];
-    
-}
 
 - (void)setupSession
 {
@@ -49,38 +45,36 @@
 }
 
 
-- (void)startServices
+#pragma mark peer map
+
+- (void)removePeerFromPeerMap:(NSString*)peerName
 {
-    [self setupLocalPeer];
-    [self setupSession];
-}
-
-
-- (void) addNewPeerToArray: (HRTRemotePeer *)peer
-{
-    
-    [nearbyPeers addObject:peer];
-    NSLog(@"new peer was added to the array with the ID %@",peer.remotePeerID);
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"updateArray" object:self];
-    
-}
-
-#warning this causes a crash when a peer leaves 
-
-- (void) removePeerFromArray: (NSString *)peerID
-{
-    NSMutableArray *peersToRemove = [NSMutableArray alloc];
-    
-    for (HRTRemotePeer *peerToRemove in nearbyPeers) {
-        if ( [peerToRemove.remotePeerID isEqualToString:peerID] ) {
-            NSLog(@"Found the peer to remove");
-            [peersToRemove addObject:peerToRemove];
-        }
+    if ( [peerMap objectForKey:peerName] )
+    {
+        [peerMap removeObjectForKey:peerName];
     }
     
-    [nearbyPeers removeObjectsInArray:peersToRemove];
+    if ( [peerImageMap objectForKey:peerName] )
+    {
+        [peerImageMap removeObjectForKey:peerName];
+    }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"updateArray" object:self];
+
 }
 
+- (void)updatePeerInfoForPeerID:(NSString*)realName forPeerName:(NSString*)peerName withImage:(UIImage*)peerImage
+{
+    NSLog(@"Recived An Update For PeerName %@ who is now RealName %@",peerName,realName);
+    if ( realName ) {
+        [peerMap setValue:realName forKey:peerName];
+    }
+    
+    if ( peerImage ) {
+        [peerImageMap setValue:peerImage forKey:peerName];
+    }
+    
+}
 
 #pragma mark hello protocol
 
@@ -142,21 +136,6 @@
     return selectedImage;
 }
 
-- (void)updatePeerInfoForPeerID:(NSString*)realName forPeerName:(NSString*)peerName withImage:(UIImage*)peerImage
-{
-    
-    NSLog(@"Recived An Update For PeerName %@ who is now RealName %@",peerName,realName);
-    
-    for (HRTRemotePeer *peer in [[HRTPeerManager sharedPeerManager]nearbyPeers]) {
-        if ([peer.remotePeerID isEqualToString:peerName]) {
-            [peer setRemotePeerName:realName];
-            [peer setRemotePeerImage:peerImage];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"updateArray" object:self];
-
-        }
-    }
-}
-
 #pragma mark JKPeerConnectiy Helper Methods
 
 - (NSArray*)currrentConnectPeers {
@@ -168,18 +147,18 @@
 
 - (void)peerHasJoined:(JKPeer*)newPeer {
     NSLog(@"We Are Now Connected To Peer %@",newPeer);
-    
-    NSString *peerUniqueID = newPeer.peerName;
-    HRTRemotePeer *freshPeer = [[HRTRemotePeer alloc]initWithID:peerUniqueID peerName:nil peerAvatar:nil];
-    [self addNewPeerToArray:freshPeer];
-    
     [self sayHelloToJKPeer:newPeer];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"updateArray" object:self];
+
 }
 
 -(void)peerHasLeft:(JKPeer *)leavingPeer {
     NSLog(@"We Are No Longer Connected To Peer %@",leavingPeer);
-    [self removePeerFromArray:leavingPeer.peerName];
+    [self removePeerFromPeerMap:leavingPeer.peerName];
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"updateArray" object:self];
+
 }
 
 

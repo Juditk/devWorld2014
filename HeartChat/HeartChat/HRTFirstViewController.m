@@ -46,7 +46,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [[[HRTPeerManager sharedPeerManager]nearbyPeers]count];
+    return [[[HRTPeerManager sharedPeerManager]currrentConnectPeers]count];
     
 }
 
@@ -60,20 +60,26 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
-    HRTRemotePeer *peer = [[[HRTPeerManager sharedPeerManager]nearbyPeers]objectAtIndex:indexPath.row];
+    JKConnection *peer = [[[HRTPeerManager sharedPeerManager]currrentConnectPeers] objectAtIndex:indexPath.row];
     
-    if (peer.remotePeerName) {
-        cell.textLabel.text = peer.remotePeerName;
+    if ( [[[HRTPeerManager sharedPeerManager]peerMap] objectForKey:peer.displayName]) {
+        
+        cell.textLabel.text = [[[HRTPeerManager sharedPeerManager] peerMap] objectForKey:peer.displayName];
+        UIImage *image = [[[HRTPeerManager sharedPeerManager]peerImageMap]objectForKey:peer.displayName];
+        
+        if ( image )
+        {
+            cell.imageView.image = image;
+            
+        }
+        
     } else {
-        cell.textLabel.text = peer.remotePeerID;
-    }
-    
-    if (peer.remotePeerImage) {
-        cell.imageView.image = peer.remotePeerImage;
+        cell.textLabel.text = peer.displayName;
     }
     
     return cell;
 }
+
 
 #pragma first run
 
@@ -88,11 +94,11 @@
         NSString *deviceName = [[UIDevice currentDevice] name];
         [[NSUserDefaults standardUserDefaults] setObject: deviceName forKey: @"Name"];
         
-        [[HRTPeerManager sharedPeerManager]startServices];
+        [[HRTPeerManager sharedPeerManager]setupSession];
         
     } else {
         
-        [[HRTPeerManager sharedPeerManager]startServices];
+        [[HRTPeerManager sharedPeerManager]setupSession];
     }
 }
 
