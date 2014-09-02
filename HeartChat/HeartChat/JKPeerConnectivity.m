@@ -35,7 +35,7 @@ static JKPeerConnectivity *sharedSession = nil;
 
 - (void)startUp {
     //Set up our own server & start it up
-    [JKPeerConnectivitySetup init];
+    [JKPeerConnectivitySetup sharedSetup];
     
     NSLog(@"Bringing Up My Local Connection");
     myConnection = [[JKLocalConnection alloc] init];
@@ -131,7 +131,6 @@ static JKPeerConnectivity *sharedSession = nil;
     
     if ( [remotePeerDeviceBeacon isEqualToString:groupID] ) {
         NSLog(@"this peer is the same as us, invite them!");
-        
         
         
         JKRemoteConnection *newRemoteConnection = [[JKRemoteConnection alloc]initWithNetService:newPeer];

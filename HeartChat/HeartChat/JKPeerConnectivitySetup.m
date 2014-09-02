@@ -10,7 +10,7 @@
 
 @implementation JKPeerConnectivitySetup
 
-@synthesize deviceNameIdentifier, groupIdentifier;
+@synthesize deviceNameIdentifier, groupIdentifier, myUniqueID;
 
 + (JKPeerConnectivitySetup *) sharedSetup
 {
@@ -27,7 +27,7 @@
     self = [super init];
     if (self) {
         deviceNameIdentifier = [[UIDevice currentDevice]name];
-        groupIdentifier = @"default";
+        groupIdentifier = @"1";
     
         NSString *UUIDToSave = [[NSUUID UUID] UUIDString];
         myUniqueID = [UUIDToSave substringToIndex:15];

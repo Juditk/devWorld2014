@@ -8,6 +8,7 @@
 
 #import "JKLocalConnection.h"
 #import "Connection.h"
+#import "HRTMessageServer.h"
 
 // Private properties
 @interface JKLocalConnection ()
@@ -115,8 +116,10 @@
 
 // One of connected clients sent a chat message. Propagate it further.
 - (void) receivedNetworkPacket:(NSDictionary*)packet viaConnection:(Connection*)connection {
-        
+
 #warning THIS IS WHERE THE MESSAGE COMES IN TO THE CLIENT FROM OTHER CLIENTS, IT NEEDS TO BE SENT TO THE MESSAGE DECODE SERVER FROM HERE
+
+    [[HRTMessageServer sharedManager]decodeMessage:[packet objectForKey:@"MessagePacket"]];
 
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import "JKRemoteConnection.h"
+#import "HRTMessageServer.h"
 
 
 // Private properties
@@ -92,7 +93,8 @@
     //NSLog(@"Incomming Data From Peer %@",packet);
     
     //Decode it
-    
+    [[HRTMessageServer sharedManager]decodeMessage:[packet objectForKey:@"MessagePacket"]];
+
 #warning THIS IS WHERE THE MESSAGE COMES IN TO THE CLIENT FROM OTHER CLIENTS, IT NEEDS TO BE SENT TO THE MESSAGE DECODE SERVER FROM HERE
     
     

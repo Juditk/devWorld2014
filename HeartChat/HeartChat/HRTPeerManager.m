@@ -44,7 +44,7 @@
     
     // Create the session that peers will be invited/join into.
     [[JKPeerConnectivity sharedManager]setDelegate:self];
-    [[JKPeerConnectivity sharedManager]startConnectingToPeersWithGroupID:@"default"];
+    [[JKPeerConnectivity sharedManager]startConnectingToPeersWithGroupID:@"1"];
 
 }
 
@@ -61,19 +61,24 @@
     
     [nearbyPeers addObject:peer];
     NSLog(@"new peer was added to the array with the ID %@",peer.remotePeerID);
-    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"updateArray" object:self];
     
 }
 
+#warning this causes a crash when a peer leaves 
+
 - (void) removePeerFromArray: (NSString *)peerID
 {
+    NSMutableArray *peersToRemove = [NSMutableArray alloc];
+    
     for (HRTRemotePeer *peerToRemove in nearbyPeers) {
         if ( [peerToRemove.remotePeerID isEqualToString:peerID] ) {
             NSLog(@"Found the peer to remove");
-            [nearbyPeers removeObject:peerToRemove];
+            [peersToRemove addObject:peerToRemove];
         }
     }
+    
+    [nearbyPeers removeObjectsInArray:peersToRemove];
 }
 
 
@@ -143,9 +148,11 @@
     NSLog(@"Recived An Update For PeerName %@ who is now RealName %@",peerName,realName);
     
     for (HRTRemotePeer *peer in [[HRTPeerManager sharedPeerManager]nearbyPeers]) {
-        if (peer.remotePeerID) {
+        if ([peer.remotePeerID isEqualToString:peerName]) {
             [peer setRemotePeerName:realName];
             [peer setRemotePeerImage:peerImage];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"updateArray" object:self];
+
         }
     }
 }
@@ -161,11 +168,18 @@
 
 - (void)peerHasJoined:(JKPeer*)newPeer {
     NSLog(@"We Are Now Connected To Peer %@",newPeer);
+    
+    NSString *peerUniqueID = newPeer.peerName;
+    HRTRemotePeer *freshPeer = [[HRTRemotePeer alloc]initWithID:peerUniqueID peerName:nil peerAvatar:nil];
+    [self addNewPeerToArray:freshPeer];
+    
     [self sayHelloToJKPeer:newPeer];
 }
 
 -(void)peerHasLeft:(JKPeer *)leavingPeer {
     NSLog(@"We Are No Longer Connected To Peer %@",leavingPeer);
+    [self removePeerFromArray:leavingPeer.peerName];
+    
 }
 
 
