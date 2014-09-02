@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ServerDelegate.h"
+#import "JKPeerConnectivitySetup.h"
 
 
 @interface Server : NSObject <NSNetServiceDelegate> {

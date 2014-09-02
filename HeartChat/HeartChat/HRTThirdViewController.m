@@ -94,10 +94,10 @@
     UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
     
     //Send the selected image to all peers
-    [[WATPeerManager sharedPeerManager]sendChatImage:chosenImage];
+    [[HRTPeerManager sharedPeerManager]sendChatImage:chosenImage];
     
     //Make sure the image appears in our own view
-    [[WATMessageServer sharedManager]updateImagesArray:chosenImage];
+    [[HRTMessageServer sharedManager]updateImagesArray:chosenImage];
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
     
@@ -123,7 +123,7 @@
 -(NSInteger)collectionView:(UICollectionView *)collectionView
     numberOfItemsInSection:(NSInteger)section {
     
-    return [[[WATMessageServer sharedManager]receivedImages]count];
+    return [[[HRTMessageServer sharedManager]receivedImages]count];
 }
 
 
@@ -136,7 +136,7 @@
     
     
     UIImageView *imageItemCellImageView = (UIImageView*)[cell viewWithTag:100];
-    UIImage *image = [[[WATMessageServer sharedManager]receivedImages]objectAtIndex:indexPath.row];
+    UIImage *image = [[[HRTMessageServer sharedManager]receivedImages]objectAtIndex:indexPath.row];
     imageItemCellImageView.image = image;
     
     return cell; // Return the cell

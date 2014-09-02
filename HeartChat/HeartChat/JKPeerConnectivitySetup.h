@@ -9,6 +9,15 @@
 #import <Foundation/Foundation.h>
 
 @interface JKPeerConnectivitySetup : NSObject
+{
+    NSString *deviceNameIdentifier;
+    NSString *groupIdentifier;
+    NSString *myUniqueID;
+}
+
+@property (nonatomic, strong) NSString *deviceNameIdentifier;
+@property (nonatomic, strong) NSString *groupIdentifier;
+@property (nonatomic, strong) NSString *myUniqueID;
 
 + (JKPeerConnectivitySetup *) sharedSetup;
 

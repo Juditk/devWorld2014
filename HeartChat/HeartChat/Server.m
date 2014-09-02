@@ -204,7 +204,7 @@ static void serverAcceptCallback(CFSocketRef socket, CFSocketCallBackType type, 
 
 - (BOOL) publishService {
   // come up with a name for our chat room
-  NSString* deviceName = [[GSDevice sharedManager] ownDeviceUUID];
+    NSString* deviceName = [[JKPeerConnectivitySetup sharedSetup]deviceNameIdentifier];
 
   // create new instance of netService
  	self.netService = [[NSNetService alloc]
@@ -213,8 +213,8 @@ static void serverAcceptCallback(CFSocketRef socket, CFSocketCallBackType type, 
     
   // Add the device discovery information
     NSDictionary *txtRecordDataDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                             [[GSDevice sharedManager]ownDeviceUUID],@"DeviceID",
-                                             [[GSHomeBeacon sharedManager]majorValue],@"DeviceBeacon",
+                                             [[JKPeerConnectivitySetup sharedSetup]myUniqueID],@"DeviceID",
+                                             [[JKPeerConnectivitySetup sharedSetup]groupIdentifier],@"DeviceBeacon",
                                              @"iOS",@"DeviceType",
                                              @"1",@"GSVersion",
                                              nil];
