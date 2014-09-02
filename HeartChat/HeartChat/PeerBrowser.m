@@ -64,7 +64,7 @@
 
 	netServiceBrowser.delegate = self;
     //[netServiceBrowser setIncludesPeerToPeer:YES];
-	[netServiceBrowser searchForServicesOfType:@"_geoStorm._tcp." inDomain:@""];
+	[netServiceBrowser searchForServicesOfType:@"_heartchat._tcp." inDomain:@"local"];
   
   return YES;
 }
@@ -105,6 +105,8 @@
     NSLog(@"We Are Now Going To Attempt To Resolve The Net Service with name %@",[netService name]);
     [netService setDelegate:self];
     [netService resolveWithTimeout:5.0];
+  } else {
+      NSLog(@"We were told about a new peer... but we allready know about this peer... why were they discovered twice..%@",[netService name]);
   }
 
   // If more entries are coming, no need to update UI just yet
@@ -154,6 +156,7 @@
 
 - (void)netService:(NSNetService *)sender didNotResolve:(NSDictionary *)errorDict {
     NSLog(@"I failed to resolve the user %@ shall we still add them?",[sender name]);
+    [delegate newPeerDiscovered:sender];
 }
 
 @end

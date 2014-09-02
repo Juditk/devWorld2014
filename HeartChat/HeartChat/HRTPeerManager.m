@@ -74,6 +74,8 @@
         [peerImageMap setValue:peerImage forKey:peerName];
     }
     
+    NSLog(@"Peer ID to Real Name reads %@",peerMap);
+    NSLog(@"Peer ID to Image Map reads %@",peerImageMap);
 }
 
 #pragma mark hello protocol
@@ -93,6 +95,7 @@
                             displayAvatar,@"displayAvatar"
                             ,nil];
     
+    NSLog(@"Sending Hello With the following information %@",myDict);
     NSData *myData = [NSKeyedArchiver archivedDataWithRootObject:myDict];
 
     [[JKPeerConnectivity sharedManager]sendDataToOnePeer:peerToSayHelloTo data:myData];
@@ -155,7 +158,7 @@
 
 -(void)peerHasLeft:(JKPeer *)leavingPeer {
     NSLog(@"We Are No Longer Connected To Peer %@",leavingPeer);
-    [self removePeerFromPeerMap:leavingPeer.peerName];
+    //[self removePeerFromPeerMap:leavingPeer.peerName];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"updateArray" object:self];
 

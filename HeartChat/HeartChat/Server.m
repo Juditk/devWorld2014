@@ -208,7 +208,7 @@ static void serverAcceptCallback(CFSocketRef socket, CFSocketCallBackType type, 
 
   // create new instance of netService
  	self.netService = [[NSNetService alloc]
-      initWithDomain:@"" type:@"_geoStorm._tcp."
+      initWithDomain:@"" type:@"_heartchat._tcp."
       name:deviceName port:self.port];
     
   // Add the device discovery information

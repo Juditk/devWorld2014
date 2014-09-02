@@ -13,6 +13,7 @@
     NSString *deviceNameIdentifier;
     NSString *groupIdentifier;
     NSString *myUniqueID;
+    NSUserDefaults *defaults;
 }
 
 @property (nonatomic, strong) NSString *deviceNameIdentifier;
