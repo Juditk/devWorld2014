@@ -17,7 +17,7 @@
 @property (nonatomic, strong) MCPeerID *myPeerID;
 
 @property (nonatomic, strong) UIButton *browseButton;
-@property (nonatomic, strong) UITextView *textBox;
-@property (nonatomic, strong) UITextField *chatBox;
+@property (nonatomic, strong) IBOutlet UITextView *textBox;
+@property (nonatomic, strong) IBOutlet UITextField *chatBox;
 
 @end

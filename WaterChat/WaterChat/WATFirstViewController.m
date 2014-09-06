@@ -14,7 +14,7 @@
 
 @implementation WATFirstViewController
 
-@synthesize tableView, nearbyPeersArray;
+@synthesize tableView;
 
 - (void)viewDidLoad
 {

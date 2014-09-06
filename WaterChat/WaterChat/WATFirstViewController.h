@@ -11,11 +11,9 @@
 
 @interface WATFirstViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
-    NSMutableArray *nearbyPeersArray;
     UITableView *tableView;
 }
 
-@property (nonatomic,retain) NSMutableArray *nearbyPeersArray;
 @property (nonatomic,retain) IBOutlet UITableView *tableView;
 
 @end

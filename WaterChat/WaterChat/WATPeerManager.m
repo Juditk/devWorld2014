@@ -107,10 +107,10 @@
                       toSession:self.session
                     withContext:nil
                         timeout:10];
-            NSLog(@"inviting");
+            NSLog(@"Inviting peer  to session");
             
         } else {
-            NSLog(@"This Session Is Full, Piss Off");
+            NSLog(@"This Session Is Full, Sorry!");
         }
         
     } else {
