@@ -205,7 +205,7 @@ static JKPeerConnectivity *sharedSession = nil;
 #if TESTING_ANDROID_CROSS_PLATFORM
     NSLog(@"Sending Data On My Local Connection Now...IN JSON!!!!");
     [myConnection broadcastPacketInJSON:dataToSend fromId:@"Device"];
-    
+    .
 #else
     
     NSLog(@"Sending Data On My Local Connection Now");

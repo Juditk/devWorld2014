@@ -43,11 +43,6 @@
     // Send data to connected peers
     [[HRTPeerManager sharedPeerManager]sendChatMessage:message];
     
-    //append your own text to the box
-    NSString *myMessage = [NSString stringWithFormat:@"Me: %@\n",message];
-    [[HRTMessageServer sharedManager]setReceivedMessage:myMessage];
-    [self updateChat];
-    
 }
 
 - (void) updateChat

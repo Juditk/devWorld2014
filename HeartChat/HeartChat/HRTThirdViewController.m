@@ -96,9 +96,6 @@
     //Send the selected image to all peers
     [[HRTPeerManager sharedPeerManager]sendChatImage:chosenImage];
     
-    //Make sure the image appears in our own view
-    [[HRTMessageServer sharedManager]updateImagesArray:chosenImage];
-    
     [picker dismissViewControllerAnimated:YES completion:NULL];
     
 }

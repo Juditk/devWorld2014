@@ -20,7 +20,6 @@
     MCPeerID *myPeerID;
     MCSession *session;
     NSMutableArray *nearbyPeers;
-    NSDictionary *myDiscoveryInfo;
 }
 
 @property (nonatomic, strong) MCNearbyServiceAdvertiser *serviceAdvertiser;
@@ -28,7 +27,6 @@
 @property (nonatomic, strong) MCPeerID *myPeerID;
 @property (nonatomic, strong) MCSession *session;
 @property (nonatomic, strong) NSMutableArray *nearbyPeers;
-@property (nonatomic, strong) NSDictionary *myDiscoveryInfo;
 @property (nonatomic, strong) NSString *encodedImage;
 
 

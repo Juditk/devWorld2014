@@ -10,7 +10,7 @@
 
 @implementation WATPeerManager 
 
-@synthesize serviceAdvertiser, serviceBrowser, myPeerID, myDiscoveryInfo, nearbyPeers, session;
+@synthesize serviceAdvertiser, serviceBrowser, myPeerID, nearbyPeers, session;
 
 + (WATPeerManager *) sharedPeerManager
 {
@@ -31,44 +31,6 @@
     return self;
 }
 
-- (void)setupLocalPeer
-{
-    //set up my discovery info to send to other peers
-    
-    NSString *uniqueID = [[NSUserDefaults standardUserDefaults] valueForKeyPath:@"personalID"];
-    
-    myPeerID = [[MCPeerID alloc] initWithDisplayName:uniqueID];
-    
-    nearbyPeers = [[NSMutableArray alloc]init];
-    
-    myDiscoveryInfo = [[NSDictionary alloc]initWithObjectsAndKeys:
-                       uniqueID,@"uniqueID", nil];
-}
-
-- (void)setupSession
-{
-    
-    NSLog(@"Setting up a session");
-    
-    // Create the session that peers will be invited/join into.
-    session = [[MCSession alloc] initWithPeer:self.myPeerID];
-    session.delegate = self;
-    
-    
-    // Create the service advertiser that is visible to everyone
-    NSString *service = @"WaterChat";
-    serviceAdvertiser = [[MCNearbyServiceAdvertiser alloc] initWithPeer:myPeerID
-                                                          discoveryInfo:myDiscoveryInfo
-                                                            serviceType:service];
-    serviceAdvertiser.delegate = self;
-    
-    // Create the service browser
-    serviceBrowser = [[MCNearbyServiceBrowser alloc] initWithPeer:myPeerID
-                                                      serviceType:service];
-    serviceBrowser.delegate = self;
-}
-
-
 - (void)startServices
 {
     if ( !session ) {
@@ -85,6 +47,40 @@
     [self.serviceAdvertiser stopAdvertisingPeer];
 }
 
+- (void)setupLocalPeer
+{
+    //set up my peerID
+    NSString *uniqueID = [[NSUserDefaults standardUserDefaults] valueForKeyPath:@"personalID"];
+    myPeerID = [[MCPeerID alloc] initWithDisplayName:uniqueID];
+    
+    //initialise our array for nearby peers
+    nearbyPeers = [[NSMutableArray alloc]init];
+
+}
+
+- (void)setupSession
+{
+    
+    NSLog(@"Setting up a session");
+    
+    // Create the session that peers will be invited/join into.
+    session = [[MCSession alloc] initWithPeer:self.myPeerID];
+    session.delegate = self;
+    
+    
+    // Create the service advertiser that is visible to everyone
+    NSString *service = @"WaterChat";
+    serviceAdvertiser = [[MCNearbyServiceAdvertiser alloc] initWithPeer:myPeerID
+                                                          discoveryInfo:nil
+                                                            serviceType:service];
+    serviceAdvertiser.delegate = self;
+    
+    // Create the service browser
+    serviceBrowser = [[MCNearbyServiceBrowser alloc] initWithPeer:myPeerID
+                                                      serviceType:service];
+    serviceBrowser.delegate = self;
+}
+
 
 // Found a nearby advertising peer
 - (void)browser:(MCNearbyServiceBrowser *)browser foundPeer:(MCPeerID *)peerID withDiscoveryInfo:(NSDictionary *)info
@@ -92,34 +88,42 @@
     
     NSLog(@"Browser found a peer");
 
-    NSString *peerUniqueID = [info objectForKey:@"uniqueID"];
+    //get some information about the newly discovered peer and add them to the array
+    NSString *peerUniqueID = peerID.displayName;
     
     WATRemotePeer *newPeer = [[WATRemotePeer alloc]initWithID:peerUniqueID peerName:nil peerAvatar:nil];
+    
     [self addNewPeerToArray:newPeer];
     
+    //we need to figure out who invites the other person but simply comparing our peer IDs
     BOOL shouldInvite = ([self.myPeerID.displayName compare:peerID.displayName]==NSOrderedDescending);
     
     if (shouldInvite)
     {
-        if ( [[session connectedPeers] count] < 8) {
+        //but first let's make sure there's room in the session
+        
+        if ( [[session connectedPeers] count] < 8 ) {
             
             [browser invitePeer:peerID
                       toSession:self.session
                     withContext:nil
                         timeout:10];
-            NSLog(@"Inviting peer  to session");
+            NSLog(@"Inviting peer to session");
             
         } else {
-            NSLog(@"This Session Is Full, Sorry!");
+            NSLog(@"This session is full, sorry!");
         }
         
     } else {
-        NSLog(@"Not inviting");
+        NSLog(@"Waiting for invitation from peer");
     }
 }
 
+//Lost a nearby peer
 - (void)browser:(MCNearbyServiceBrowser *)browser lostPeer:(MCPeerID *)peerID
 {
+    
+    //get some information about the peer so can remove them from the array
     
     NSString *lostPeerID = peerID.displayName;
     [self removePeerFromArray:lostPeerID];
@@ -175,7 +179,6 @@
 
 - (void)session:(MCSession *)session peer:(MCPeerID *)peerID didChangeState:(MCSessionState)state
 {
-    NSLog(@"Peer [%@] changed state to %d", peerID.displayName, state);
     
     switch (state) {
         case MCSessionStateNotConnected:
@@ -191,6 +194,7 @@
             [self sayHelloToPeer:@[peerID]];
             
             break;
+            
         default:
             break;
     }
@@ -223,7 +227,7 @@
     NSLog(@"didReceiveStream %@ from %@", streamName, peerID.displayName);
 }
 
-#pragma mark hello protocol
+#pragma mark protocols
 
 - (void) sayHelloToPeer:(NSArray*)peersToSayHelloTo
 {
@@ -298,8 +302,6 @@
     }
     
 }
-
-
 
 
 @end
