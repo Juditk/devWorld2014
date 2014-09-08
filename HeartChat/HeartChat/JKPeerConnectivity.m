@@ -126,6 +126,31 @@ static JKPeerConnectivity *sharedSession = nil;
     //if statement on groupID for groupID - startConnectingToPeersWithGroupID
     //save remote user's device beacon
     
+    if ( ![txtInfo objectForKey:@"DeviceType"] ) {
+        NSLog(@"This device has no TXT data, they may be an Android for peer %@",newPeer);
+        
+        JKRemoteConnection *newRemoteConnection = [[JKRemoteConnection alloc]initWithNetService:newPeer];
+        [newRemoteConnection setDelegate:self];
+        [newRemoteConnection setDisplayName:@"We come in peace"];
+        [peerConnections addObject:newRemoteConnection];
+        
+        JKPeer *newJKPeer = [[JKPeer alloc] initWithNetService:newPeer
+                                                          Name:@"We come in peace"
+                                                         Major:@"Default"
+                                                        osType:@"Android"];
+        
+        
+        [peerIDToConnectionMap setObject:newRemoteConnection forKey:newJKPeer.peerName];
+        [peerToNetServiceMap setObject:newJKPeer forKey:newPeer.name];
+        
+        if ( [newRemoteConnection start] ) {
+            [delegate peerHasJoined:newJKPeer];
+        }
+        
+        return;
+
+    }
+    
     NSString *remotePeerDeviceBeacon = [[NSString alloc] initWithData:[txtInfo objectForKey:@"DeviceBeacon"]
                                                              encoding:NSUTF8StringEncoding];
     

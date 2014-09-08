@@ -76,6 +76,9 @@
     
     NSLog(@"Peer ID to Real Name reads %@",peerMap);
     NSLog(@"Peer ID to Image Map reads %@",peerImageMap);
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"updateArray" object:self];
+
 }
 
 #pragma mark hello protocol
@@ -150,7 +153,20 @@
 
 - (void)peerHasJoined:(JKPeer*)newPeer {
     NSLog(@"We Are Now Connected To Peer %@",newPeer);
+    
+    if ( [newPeer.peerOSType isEqualToString:@"Android"] ) {
+        NSLog(@"ANDROID!!!");
+        NSString *peerName = newPeer.peerName;
+        NSString *realName = newPeer.peerName;
+        UIImage *displayAvatar = [UIImage imageNamed:@"Android"];
+        
+        [self updatePeerInfoForPeerID:realName forPeerName:peerName withImage:displayAvatar];
+        
+    } else {
+    
     [self sayHelloToJKPeer:newPeer];
+        
+    }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"updateArray" object:self];
 
