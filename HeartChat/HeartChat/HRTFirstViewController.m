@@ -54,10 +54,12 @@
 {
     
     UITableViewCell *cell;
-    static NSString *cellIdentifier = @"peerCell";
+   // static NSString *cellIdentifier = @"peerCell";
+    
+    
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"peerCell"];
     }
     
     JKConnection *peer = [[[HRTPeerManager sharedPeerManager]currrentConnectPeers] objectAtIndex:indexPath.row];

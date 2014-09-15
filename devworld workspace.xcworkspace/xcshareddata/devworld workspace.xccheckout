@@ -10,29 +10,29 @@
 	<string>devworld workspace</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>29E08376-209C-44D7-B7B5-1D0478479BD3</key>
+		<key>989BDDF61305E86FFFF0B5D6186C8F0A5E3A103D</key>
 		<string>https://github.com/Juditk/dw14.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>devworld workspace.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>29E08376-209C-44D7-B7B5-1D0478479BD3</key>
+		<key>989BDDF61305E86FFFF0B5D6186C8F0A5E3A103D</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/Juditk/dw14.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>29E08376-209C-44D7-B7B5-1D0478479BD3</string>
+	<string>989BDDF61305E86FFFF0B5D6186C8F0A5E3A103D</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>29E08376-209C-44D7-B7B5-1D0478479BD3</string>
+			<string>989BDDF61305E86FFFF0B5D6186C8F0A5E3A103D</string>
 			<key>IDESourceControlWCCName</key>
 			<string>dw14</string>
 		</dict>

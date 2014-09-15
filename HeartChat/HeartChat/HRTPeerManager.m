@@ -91,11 +91,12 @@
     NSString *peerName = [[JKPeerConnectivitySetup sharedSetup]myUniqueID];
     NSString *realName = [[JKPeerConnectivitySetup sharedSetup]deviceNameIdentifier];
     UIImage *displayAvatar = [self randomImage];
+    NSData *imagedata = UIImagePNGRepresentation(displayAvatar);
     
     NSDictionary *myDict = [[NSDictionary alloc]initWithObjectsAndKeys:@kIncomingMessageTypeHello,@"messageType",
                             peerName,@"peerName",
                             realName,@"realName",
-                            displayAvatar,@"displayAvatar"
+                            imagedata,@"displayAvatar"
                             ,nil];
     
     NSLog(@"Sending Hello With the following information %@",myDict);
