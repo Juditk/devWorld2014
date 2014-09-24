@@ -48,7 +48,8 @@
             NSLog(@"Somebody Is Saying Hello");
             NSString *peerName = [incomingDict objectForKey:@"peerName"];
             NSString *realName = [incomingDict objectForKey:@"realName"];
-            UIImage *displayAvatar = [incomingDict objectForKey:@"displayAvatar"];
+            NSData *imageData = [incomingDict objectForKey:@"displayAvatar"];
+            UIImage *displayAvatar = [UIImage imageWithData:imageData];
             
             [[WATPeerManager sharedPeerManager]updatePeerInfoForPeerID:realName forPeerName:peerName withImage:displayAvatar];
             

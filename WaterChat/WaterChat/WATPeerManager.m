@@ -237,11 +237,12 @@
     NSString *peerID = self.myPeerID.displayName;
     NSString *realName = [[NSUserDefaults standardUserDefaults] stringForKey:@"Name"];
     UIImage *displayAvatar = [self randomImage];
+    NSData *imagedata = UIImagePNGRepresentation(displayAvatar);
     
     NSDictionary *myDict = [[NSDictionary alloc]initWithObjectsAndKeys:@kIncomingMessageTypeHello,@"messageType",
                             peerID,@"peerName",
                             realName,@"realName",
-                            displayAvatar,@"displayAvatar"
+                            imagedata,@"displayAvatar"
                             ,nil];
     
     NSData *myData = [NSKeyedArchiver archivedDataWithRootObject:myDict];
