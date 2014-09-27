@@ -10,7 +10,7 @@
 
 @implementation HRTPeerManager
 
-@synthesize nearbyPeers, peerImageMap, peerMap;
+@synthesize peerImageMap, peerMap;
 
 + (HRTPeerManager *) sharedPeerManager
 {
@@ -42,6 +42,44 @@
     [[JKPeerConnectivity sharedManager]setDelegate:self];
     [[JKPeerConnectivity sharedManager]startConnectingToPeersWithGroupID:@"1"];
 
+}
+
+#pragma mark JKPeerConnectivty Delegate Methods (New Networking 2.0 Framework)
+
+- (void)peerHasJoined:(JKPeer*)newPeer {
+    NSLog(@"We Are Now Connected To Peer %@",newPeer);
+    
+    if ( [newPeer.peerOSType isEqualToString:@"Android"] ) {
+        NSLog(@"ANDROID!!!");
+        NSString *peerName = newPeer.peerName;
+        NSString *realName = newPeer.peerName;
+        UIImage *displayAvatar = [UIImage imageNamed:@"Android"];
+        
+        [self updatePeerInfoForPeerID:realName forPeerName:peerName withImage:displayAvatar];
+        
+    } else {
+        
+        [self sayHelloToJKPeer:newPeer];
+        
+    }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"updateArray" object:self];
+    
+}
+
+-(void)peerHasLeft:(JKPeer *)leavingPeer {
+    NSLog(@"We Are No Longer Connected To Peer %@",leavingPeer);
+    //[self removePeerFromPeerMap:leavingPeer.peerName];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"updateArray" object:self];
+    
+}
+
+#pragma mark JKPeerConnectiy Helper Methods
+
+- (NSArray*)currrentConnectPeers {
+    
+    return [[[JKPeerConnectivity sharedManager]peerConnections] allObjects];
 }
 
 
@@ -81,7 +119,7 @@
 
 }
 
-#pragma mark hello protocol
+#pragma mark protocols
 
 - (void) sayHelloToJKPeer:(JKPeer*)peerToSayHelloTo
 {
@@ -141,44 +179,6 @@
     NSString *imageString = [NSString stringWithFormat:@"avatar%lu",(unsigned long)randomIndex];
     UIImage *selectedImage = [UIImage imageNamed:imageString];
     return selectedImage;
-}
-
-#pragma mark JKPeerConnectiy Helper Methods
-
-- (NSArray*)currrentConnectPeers {
-    
-    return [[[JKPeerConnectivity sharedManager]peerConnections] allObjects];
-}
-
-#pragma mark JKPeerConnectivty Delegate Methods (New Networking 2.0 Framework)
-
-- (void)peerHasJoined:(JKPeer*)newPeer {
-    NSLog(@"We Are Now Connected To Peer %@",newPeer);
-    
-    if ( [newPeer.peerOSType isEqualToString:@"Android"] ) {
-        NSLog(@"ANDROID!!!");
-        NSString *peerName = newPeer.peerName;
-        NSString *realName = newPeer.peerName;
-        UIImage *displayAvatar = [UIImage imageNamed:@"Android"];
-        
-        [self updatePeerInfoForPeerID:realName forPeerName:peerName withImage:displayAvatar];
-        
-    } else {
-    
-    [self sayHelloToJKPeer:newPeer];
-        
-    }
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"updateArray" object:self];
-
-}
-
--(void)peerHasLeft:(JKPeer *)leavingPeer {
-    NSLog(@"We Are No Longer Connected To Peer %@",leavingPeer);
-    //[self removePeerFromPeerMap:leavingPeer.peerName];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"updateArray" object:self];
-
 }
 
 

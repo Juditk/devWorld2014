@@ -82,6 +82,8 @@
 }
 
 
+#pragma mark - MCNearbyServiceBrowser Delegate methods
+
 // Found a nearby advertising peer
 - (void)browser:(MCNearbyServiceBrowser *)browser foundPeer:(MCPeerID *)peerID withDiscoveryInfo:(NSDictionary *)info
 {
@@ -119,20 +121,6 @@
     }
 }
 
-//Lost a nearby peer
-- (void)browser:(MCNearbyServiceBrowser *)browser lostPeer:(MCPeerID *)peerID
-{
-    
-    //get some information about the peer so can remove them from the array
-    
-    NSString *lostPeerID = peerID.displayName;
-    [self removePeerFromArray:lostPeerID];
-    
-    NSLog(@"lostPeer %@", lostPeerID);
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"updateArray" object:self];
-    
-}
 
 - (void) addNewPeerToArray: (WATRemotePeer *)peer
 {
@@ -160,7 +148,7 @@
 }
 
 
-#pragma mark - MCNearbyServiceAdvertiserDelegate protocol conformance
+#pragma mark - MCNearbyServiceAdvertiser Delegate methods
 
 - (void)advertiser:(MCNearbyServiceAdvertiser *)advertiser didReceiveInvitationFromPeer:(MCPeerID *)peerID withContext:(NSData *)context invitationHandler:(void(^)(BOOL accept, MCSession *session))invitationHandler
 {
@@ -173,6 +161,21 @@
 - (void)advertiser:(MCNearbyServiceAdvertiser *)advertiser didNotStartAdvertisingPeer:(NSError *)error
 {
     NSLog(@"didNotStartAdvertisingForPeers: %@", error);
+}
+
+//Lost a peer
+- (void)browser:(MCNearbyServiceBrowser *)browser lostPeer:(MCPeerID *)peerID
+{
+    
+    //get some information about the peer so can remove them from the array
+    
+    NSString *lostPeerID = peerID.displayName;
+    [self removePeerFromArray:lostPeerID];
+    
+    NSLog(@"lostPeer %@", lostPeerID);
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"updateArray" object:self];
+    
 }
 
 #pragma mark - MCSessionDelegate protocol conformance

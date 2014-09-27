@@ -69,49 +69,6 @@
     [self dismissBrowserVC];
 }
 
-#pragma mark Sending Data
-
-- (void) sendText
-{
-    //retrieve text from chat box and clear chat box
-    NSString *message = self.chatBox.text;
-    self.chatBox.text = @"";
-    
-    //convert text to NSData
-    NSData *data = [message dataUsingEncoding:NSUTF8StringEncoding];
-    
-    // Send data to connected peers
-    NSError *error;
-    [self.mySession sendData:data toPeers:[self.mySession connectedPeers] withMode:MCSessionSendDataUnreliable error:&error];
-    
-    //append your own text to the box
-    [self receiveMessage:message fromPeer:self.myPeerID];
-    
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [textField resignFirstResponder];
-    [self sendText];
-    return YES;
-}
-
-- (void) receiveMessage: (NSString *) message fromPeer: (MCPeerID *) peer
-{
-    //create the final text to append
-    
-    NSString *finalText;
-    if (peer == self.myPeerID) {
-        finalText = [NSString stringWithFormat:@"\nme: %@\n", message];
-    } else {
-        finalText = [NSString stringWithFormat:@"\n%@: %@\n", peer.displayName, message];
-    }
-    
-    //append text to text box
-    self.textBox.text = [self.textBox.text stringByAppendingString:finalText];
-    
-}
-
 #pragma marks MCSessionDelegate methods
 
 //remote peer changed state
@@ -158,6 +115,51 @@
 {
     
 }
+
+
+#pragma mark Sending Data
+
+- (void) sendText
+{
+    //retrieve text from chat box and clear chat box
+    NSString *message = self.chatBox.text;
+    self.chatBox.text = @"";
+    
+    //convert text to NSData
+    NSData *data = [message dataUsingEncoding:NSUTF8StringEncoding];
+    
+    // Send data to connected peers
+    NSError *error;
+    [self.mySession sendData:data toPeers:[self.mySession connectedPeers] withMode:MCSessionSendDataUnreliable error:&error];
+    
+    //append your own text to the box
+    [self receiveMessage:message fromPeer:self.myPeerID];
+    
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    [self sendText];
+    return YES;
+}
+
+- (void) receiveMessage: (NSString *) message fromPeer: (MCPeerID *) peer
+{
+    //create the final text to append
+    
+    NSString *finalText;
+    if (peer == self.myPeerID) {
+        finalText = [NSString stringWithFormat:@"\nme: %@\n", message];
+    } else {
+        finalText = [NSString stringWithFormat:@"\n%@: %@\n", peer.displayName, message];
+    }
+    
+    //append text to text box
+    self.textBox.text = [self.textBox.text stringByAppendingString:finalText];
+    
+}
+
 
 
 - (void)didReceiveMemoryWarning

@@ -8,19 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "JKPeerConnectivity.h"
-#import "HRTRemotePeer.h"
 #import "HRTConstants.h"
 #import "HRTMessageServer.h"
 
 
 @interface HRTPeerManager : NSObject <JKPeerConnectivityDelegate>
 {
-    NSMutableArray *nearbyPeers;
     NSMutableDictionary *peerMap;
     NSMutableDictionary *peerImageMap;
 }
 
-@property (nonatomic, strong) NSMutableArray *nearbyPeers;
 @property (nonatomic, strong) NSString *encodedImage;
 @property (nonatomic, strong) NSMutableDictionary *peerMap;
 @property (nonatomic, strong) NSMutableDictionary *peerImageMap;

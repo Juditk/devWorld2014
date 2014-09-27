@@ -24,7 +24,6 @@
 		B28132F219B3E0F600609DDB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B28132F019B3E0F600609DDB /* InfoPlist.strings */; };
 		B28132F419B3E0F600609DDB /* HeartChatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B28132F319B3E0F600609DDB /* HeartChatTests.m */; };
 		B281330319B3E14800609DDB /* HRTPeerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B281330219B3E14800609DDB /* HRTPeerManager.m */; };
-		B281330619B3E15600609DDB /* HRTRemotePeer.m in Sources */ = {isa = PBXBuildFile; fileRef = B281330519B3E15600609DDB /* HRTRemotePeer.m */; };
 		B281330919B3E17100609DDB /* HRTMessageServer.m in Sources */ = {isa = PBXBuildFile; fileRef = B281330819B3E17100609DDB /* HRTMessageServer.m */; };
 		B281331219B3E1C900609DDB /* JKPeer.m in Sources */ = {isa = PBXBuildFile; fileRef = B281330E19B3E1C900609DDB /* JKPeer.m */; };
 		B281331319B3E1C900609DDB /* JKPeerConnectivity.m in Sources */ = {isa = PBXBuildFile; fileRef = B281331019B3E1C900609DDB /* JKPeerConnectivity.m */; };
@@ -74,8 +73,6 @@
 		B28132F319B3E0F600609DDB /* HeartChatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeartChatTests.m; sourceTree = "<group>"; };
 		B281330119B3E14800609DDB /* HRTPeerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRTPeerManager.h; sourceTree = "<group>"; };
 		B281330219B3E14800609DDB /* HRTPeerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRTPeerManager.m; sourceTree = "<group>"; };
-		B281330419B3E15600609DDB /* HRTRemotePeer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRTRemotePeer.h; sourceTree = "<group>"; };
-		B281330519B3E15600609DDB /* HRTRemotePeer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRTRemotePeer.m; sourceTree = "<group>"; };
 		B281330719B3E17100609DDB /* HRTMessageServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRTMessageServer.h; sourceTree = "<group>"; };
 		B281330819B3E17100609DDB /* HRTMessageServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRTMessageServer.m; sourceTree = "<group>"; };
 		B281330A19B3E17A00609DDB /* HRTConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRTConstants.h; sourceTree = "<group>"; };
@@ -218,8 +215,6 @@
 			children = (
 				B281330119B3E14800609DDB /* HRTPeerManager.h */,
 				B281330219B3E14800609DDB /* HRTPeerManager.m */,
-				B281330419B3E15600609DDB /* HRTRemotePeer.h */,
-				B281330519B3E15600609DDB /* HRTRemotePeer.m */,
 				B281330719B3E17100609DDB /* HRTMessageServer.h */,
 				B281330819B3E17100609DDB /* HRTMessageServer.m */,
 				B281330A19B3E17A00609DDB /* HRTConstants.h */,
@@ -421,7 +416,6 @@
 				B28132D619B3E0F600609DDB /* HRTAppDelegate.m in Sources */,
 				B281331219B3E1C900609DDB /* JKPeer.m in Sources */,
 				B281332F19B3E24300609DDB /* HRTThirdViewController.m in Sources */,
-				B281330619B3E15600609DDB /* HRTRemotePeer.m in Sources */,
 				B281330919B3E17100609DDB /* HRTMessageServer.m in Sources */,
 				B28132DC19B3E0F600609DDB /* HRTFirstViewController.m in Sources */,
 				B281332C19B3E20000609DDB /* Connection.m in Sources */,
