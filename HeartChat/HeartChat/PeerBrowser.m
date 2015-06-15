@@ -83,8 +83,8 @@
 	}
 
 	netServiceBrowser.delegate = self;
-    //[netServiceBrowser setIncludesPeerToPeer:YES];
-	[netServiceBrowser searchForServicesOfType:@"_heartchat._tcp." inDomain:@"local"];
+    [netServiceBrowser setIncludesPeerToPeer:YES];
+    [netServiceBrowser searchForServicesOfType:@"_geoStorm._tcp." inDomain:@"local."];
   
   return YES;
 }
