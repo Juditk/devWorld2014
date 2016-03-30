@@ -137,7 +137,7 @@
                             imagedata,@"displayAvatar"
                             ,nil];
     
-    NSLog(@"Sending Hello With the following information %@",myDict);
+    NSLog(@"Sending a hello message");
     NSData *myData = [NSKeyedArchiver archivedDataWithRootObject:myDict];
 
     [[JKPeerConnectivity sharedManager]sendDataToOnePeer:peerToSayHelloTo data:myData];
