@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B204DC771CAC7ED4004EEAE7 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B204DC761CAC7ED4004EEAE7 /* Launch Screen.storyboard */; };
 		B22981A319B553EB0087ED68 /* JKPeerConnectivitySetup.m in Sources */ = {isa = PBXBuildFile; fileRef = B22981A219B553EB0087ED68 /* JKPeerConnectivitySetup.m */; };
 		B28132C619B3E0F600609DDB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B28132C519B3E0F600609DDB /* Foundation.framework */; };
 		B28132C819B3E0F600609DDB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B28132C719B3E0F600609DDB /* CoreGraphics.framework */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B204DC761CAC7ED4004EEAE7 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		B22981A119B553EB0087ED68 /* JKPeerConnectivitySetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKPeerConnectivitySetup.h; sourceTree = "<group>"; };
 		B22981A219B553EB0087ED68 /* JKPeerConnectivitySetup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKPeerConnectivitySetup.m; sourceTree = "<group>"; };
 		B28132C219B3E0F600609DDB /* HeartChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeartChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -226,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				B28132D719B3E0F600609DDB /* Main.storyboard */,
+				B204DC761CAC7ED4004EEAE7 /* Launch Screen.storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -350,7 +353,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = HRT;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = juditk;
 				TargetAttributes = {
 					B28132E519B3E0F600609DDB = {
@@ -384,6 +387,7 @@
 			files = (
 				B28132E119B3E0F600609DDB /* Images.xcassets in Resources */,
 				B28132D019B3E0F600609DDB /* InfoPlist.strings in Resources */,
+				B204DC771CAC7ED4004EEAE7 /* Launch Screen.storyboard in Resources */,
 				B28132D919B3E0F600609DDB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,6 +490,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -546,6 +551,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HeartChat/HeartChat-Prefix.pch";
 				INFOPLIST_FILE = "HeartChat/HeartChat-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.juditk.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -559,6 +565,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HeartChat/HeartChat-Prefix.pch";
 				INFOPLIST_FILE = "HeartChat/HeartChat-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.juditk.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -580,6 +587,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "HeartChatTests/HeartChatTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.juditk.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -598,6 +606,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HeartChat/HeartChat-Prefix.pch";
 				INFOPLIST_FILE = "HeartChatTests/HeartChatTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.juditk.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

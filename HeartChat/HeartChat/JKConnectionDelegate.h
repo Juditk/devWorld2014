@@ -31,7 +31,7 @@
 @class JKConnection;
 
 @protocol JKConnectionDelegate
-
+@optional
 - (void) displayChatMessage:(NSString*)message fromUser:(NSString*)userName;
 - (void) roomTerminated:(id)room reason:(NSString*)string;
 - (void) remoteConnectionHasClosed:(JKConnection*)oldConnection;

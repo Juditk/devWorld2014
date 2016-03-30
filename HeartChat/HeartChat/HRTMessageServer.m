@@ -32,7 +32,7 @@
     return self;
 }
 
-- (void) decodeMessage: (NSData *)incomingData
+- (void) decodeMessage:(NSData *)incomingData
 {
     
     NSLog(@"Decoding Message Now");

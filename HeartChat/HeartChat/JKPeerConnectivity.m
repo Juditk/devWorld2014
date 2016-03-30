@@ -121,7 +121,7 @@ static JKPeerConnectivity *sharedSession = nil;
     NSLog(@"It Is Running Operating System %@",[[NSString alloc] initWithData:[txtInfo objectForKey:@"DeviceType"]
                                                                      encoding:NSUTF8StringEncoding]);
     
-#warning We also need to check if we even have room for this peer anymore
+#warning We need to check if we even have room for this peer anymore - currently we accept an inifite number of connections.
     
     //if statement on groupID for groupID - startConnectingToPeersWithGroupID
     //save remote user's device beacon
@@ -156,7 +156,6 @@ static JKPeerConnectivity *sharedSession = nil;
     
     if ( [remotePeerDeviceBeacon isEqualToString:groupID] ) {
         NSLog(@"this peer is the same as us, invite them!");
-        
         
         JKRemoteConnection *newRemoteConnection = [[JKRemoteConnection alloc]initWithNetService:newPeer];
         [newRemoteConnection setDelegate:self];
@@ -230,7 +229,7 @@ static JKPeerConnectivity *sharedSession = nil;
 #if TESTING_ANDROID_CROSS_PLATFORM
     NSLog(@"Sending Data On My Local Connection Now...IN JSON!!!!");
     [myConnection broadcastPacketInJSON:dataToSend fromId:@"Device"];
-    .
+    
 #else
     
     NSLog(@"Sending Data On My Local Connection Now");

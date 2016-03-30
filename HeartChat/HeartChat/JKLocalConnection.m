@@ -137,8 +137,7 @@
 // One of connected clients sent a chat message. Propagate it further.
 - (void) receivedNetworkPacket:(NSDictionary*)packet viaConnection:(Connection*)connection {
 
-#warning THIS IS WHERE THE MESSAGE COMES IN TO THE CLIENT FROM OTHER CLIENTS, IT NEEDS TO BE SENT TO THE MESSAGE DECODE SERVER FROM HERE
-
+    //This is where the message comes in to the client from other clients, it needs to be sent to the message decode server from here.
     [[HRTMessageServer sharedManager]decodeMessage:[packet objectForKey:@"MessagePacket"]];
 
 }

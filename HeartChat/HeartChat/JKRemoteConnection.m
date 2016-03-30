@@ -94,16 +94,16 @@
 #pragma mark ConnectionDelegate Method Implementations
 
 - (void)connectionAttemptFailed:(Connection*)connection {
-    NSLog(@"Failed To COnnecto To REmote Peer");
+    NSLog(@"Failed To Connect to remote peer");
 #warning Failed To Connect To Peer Logic goes here
 }
 
-
+// A peer has left us
 - (void)connectionTerminated:(Connection*)connection {
     NSLog(@"Connection To Remote Peer has been terminated");
 
     [delegate remoteConnectionHasClosed:self];
-    #warning Peer has left us goes here
+    
 
 }
 
@@ -112,10 +112,9 @@
 	
     //NSLog(@"Incomming Data From Peer %@",packet);
     
-    //Decode it
+    //This is where the message comes in to the client from other clients, it needs to be sent to the message decode server from here.
     [[HRTMessageServer sharedManager]decodeMessage:[packet objectForKey:@"MessagePacket"]];
 
-#warning THIS IS WHERE THE MESSAGE COMES IN TO THE CLIENT FROM OTHER CLIENTS, IT NEEDS TO BE SENT TO THE MESSAGE DECODE SERVER FROM HERE
     
     
 }

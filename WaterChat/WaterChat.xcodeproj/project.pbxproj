@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B204DC731CAC7CF8004EEAE7 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B204DC721CAC7CF8004EEAE7 /* Launch Screen.storyboard */; };
 		B24D5F4619AC3474009FDA63 /* WATPeerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B24D5F4519AC3474009FDA63 /* WATPeerManager.m */; };
 		B24D5F4919AC352B009FDA63 /* WATRemotePeer.m in Sources */ = {isa = PBXBuildFile; fileRef = B24D5F4819AC352B009FDA63 /* WATRemotePeer.m */; };
 		B24D5F4D19AC689E009FDA63 /* WATMessageServer.m in Sources */ = {isa = PBXBuildFile; fileRef = B24D5F4C19AC689E009FDA63 /* WATMessageServer.m */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B204DC721CAC7CF8004EEAE7 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		B24D5F4419AC3474009FDA63 /* WATPeerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WATPeerManager.h; sourceTree = "<group>"; };
 		B24D5F4519AC3474009FDA63 /* WATPeerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WATPeerManager.m; sourceTree = "<group>"; };
 		B24D5F4719AC352B009FDA63 /* WATRemotePeer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WATRemotePeer.h; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 		B24D5F4219AC3412009FDA63 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B204DC721CAC7CF8004EEAE7 /* Launch Screen.storyboard */,
 				B2DF126319AAE9DF00285F79 /* Main.storyboard */,
 			);
 			name = Views;
@@ -256,7 +259,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = WAT;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = juditk;
 				TargetAttributes = {
 					B2DF127119AAE9DF00285F79 = {
@@ -290,6 +293,7 @@
 			files = (
 				B2DF126D19AAE9DF00285F79 /* Images.xcassets in Resources */,
 				B2DF125C19AAE9DF00285F79 /* InfoPlist.strings in Resources */,
+				B204DC731CAC7CF8004EEAE7 /* Launch Screen.storyboard in Resources */,
 				B2DF126519AAE9DF00285F79 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -384,6 +388,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -444,6 +449,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WaterChat/WaterChat-Prefix.pch";
 				INFOPLIST_FILE = "WaterChat/WaterChat-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.juditk.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -457,6 +463,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WaterChat/WaterChat-Prefix.pch";
 				INFOPLIST_FILE = "WaterChat/WaterChat-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.juditk.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -478,6 +485,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "WaterChatTests/WaterChatTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.juditk.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -496,6 +504,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WaterChat/WaterChat-Prefix.pch";
 				INFOPLIST_FILE = "WaterChatTests/WaterChatTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.juditk.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

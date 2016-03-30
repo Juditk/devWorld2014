@@ -288,7 +288,7 @@
 - (UIImage *)randomImage
 {
     NSUInteger randomIndex = arc4random()%10;
-    NSString *imageString = [NSString stringWithFormat:@"avatar%d",randomIndex];
+    NSString *imageString = [NSString stringWithFormat:@"avatar%lu",(unsigned long)randomIndex];
     UIImage *selectedImage = [UIImage imageNamed:imageString];
     return selectedImage;
 }

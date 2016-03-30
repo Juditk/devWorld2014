@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B204DC751CAC7E5B004EEAE7 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B204DC741CAC7E5B004EEAE7 /* Launch Screen.storyboard */; };
 		B2DF120F19AAE6A000285F79 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2DF120E19AAE6A000285F79 /* Foundation.framework */; };
 		B2DF121119AAE6A000285F79 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2DF121019AAE6A000285F79 /* CoreGraphics.framework */; };
 		B2DF121319AAE6A000285F79 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2DF121219AAE6A000285F79 /* UIKit.framework */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B204DC741CAC7E5B004EEAE7 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		B2DF120B19AAE6A000285F79 /* WindChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WindChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2DF120E19AAE6A000285F79 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B2DF121019AAE6A000285F79 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -119,6 +121,7 @@
 				B2DF121D19AAE6A000285F79 /* WINAppDelegate.h */,
 				B2DF121E19AAE6A000285F79 /* WINAppDelegate.m */,
 				B2DF122019AAE6A000285F79 /* Main.storyboard */,
+				B204DC741CAC7E5B004EEAE7 /* Launch Screen.storyboard */,
 				B2DF122319AAE6A000285F79 /* WINViewController.h */,
 				B2DF122419AAE6A000285F79 /* WINViewController.m */,
 				B2DF122619AAE6A000285F79 /* Images.xcassets */,
@@ -201,7 +204,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = WIN;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = juditk;
 				TargetAttributes = {
 					B2DF122B19AAE6A000285F79 = {
@@ -235,6 +238,7 @@
 			files = (
 				B2DF122719AAE6A000285F79 /* Images.xcassets in Resources */,
 				B2DF121919AAE6A000285F79 /* InfoPlist.strings in Resources */,
+				B204DC751CAC7E5B004EEAE7 /* Launch Screen.storyboard in Resources */,
 				B2DF122219AAE6A000285F79 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,6 +328,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -384,6 +389,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WindChat/WindChat-Prefix.pch";
 				INFOPLIST_FILE = "WindChat/WindChat-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.juditk.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -397,6 +404,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WindChat/WindChat-Prefix.pch";
 				INFOPLIST_FILE = "WindChat/WindChat-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.juditk.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -418,6 +427,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "WindChatTests/WindChatTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.juditk.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -436,6 +446,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WindChat/WindChat-Prefix.pch";
 				INFOPLIST_FILE = "WindChatTests/WindChatTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.juditk.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -461,6 +472,7 @@
 				B2DF123F19AAE6A000285F79 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B2DF124019AAE6A000285F79 /* Build configuration list for PBXNativeTarget "WindChatTests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +481,7 @@
 				B2DF124219AAE6A000285F79 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
