@@ -8,7 +8,7 @@ This app uses the simplest implementation of Apple's MultipeerConnectivity frame
 ###WaterChat###
 This app uses a more custom implementation of Apple's MultipeerConnectivity framework. It implements a custom UI and logic for automatically sending and receiving invitations. It still abstracts out a lot of the complicated networking code, but at a more customisable level. I worked a lot with this implementation but unfortunately in the end, the limitations of the simplified abstraction restricted what I wanted to do, and so I built...
 
-###HeartChat### 
+###HeartChat###
 This app is a completely custom implementation of peer to peer networking capabilities. I offer this to the world an alternative to MultipeerConnectivity if you find yourself in the same situation I was in. This app is an implementation of a custom peer to peer networking framework built using socket level connections and abstracted out into MultipeerConnectivity-like calls. The chat app shows an example of how it can be used to connect to nearby peers and send text and images. 
 
 This framework, which I came to call JKPeerConnectivity, is built on the work of Peter Bakhirev and does a lot of the heavy lifting and would not have been possible without his contributions to the open source world, for which I am incredibly grateful. See - https://github.com/pbkhrv and http://mobileorchard.com/tutorial-networking-and-bonjour-on-iphone/ . His licence has been kept in tact on the appropriate files.
